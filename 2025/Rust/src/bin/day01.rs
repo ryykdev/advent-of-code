@@ -121,9 +121,8 @@ fn count_zeros(dials: &Vec<Dial>) -> u32 {
 
 #[cfg(test)]
 mod tests {
-    use std::vec;
-
     use super::*;
+    use std::vec;
 
     const TEST_INPUT: &str = r#"
 L68

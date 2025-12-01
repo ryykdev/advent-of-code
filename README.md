@@ -1,2 +1,3 @@
-# advent-of-code-2025-rust
-Advent of Code Challenge 2025 in Rust
+# Advent of Code
+
+I try to solve these challenges old school style, using LLMs mainly as a search engine on how to use specific APIs and not to generate solutions to the problems.

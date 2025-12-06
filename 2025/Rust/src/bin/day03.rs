@@ -54,17 +54,14 @@ fn highest_twelve_digit(input: &str) -> usize {
     let mut index = 0;
     while result.len() < capacity {
         'inner: for n in (0..=9).rev() {
-            if let Some(idx) = input[index..].find(&n.to_string()) {
-                if input[index + idx..].len() >= window {
+            if let Some(idx) = input[index..].find(&n.to_string()) && input[index + idx..].len() >= window {
                     result.push_str(&n.to_string());
-                    index += idx;
+                    index += idx + 1;
                     window -= 1;
                     if result.len() == 12 {
                         return result.parse::<usize>().expect("integer");
                     }
-                    index += 1;
                     break 'inner;
-                }
             }
         }
     }

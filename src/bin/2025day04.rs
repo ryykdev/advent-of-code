@@ -12,7 +12,6 @@ fn main() {
 
     // part 1
     let (result1, _vec) = can_forklift(&input);
-
     println!(">> part 1: {}", result1);
 
     // part 2

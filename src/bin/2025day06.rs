@@ -1,0 +1,104 @@
+use std::fs;
+
+const YEAR: &str = "2025";
+const DAY: &str = "06";
+
+fn main() {
+    println!("day{DAY}");
+
+    let input = fs::read_to_string(format!("src/bin/{YEAR}day{DAY}.txt")).unwrap();
+
+    // part 1
+    let result1 = part1(&input);
+    println!(">> part 1: {result1}");
+
+    // part 2
+    let result2 = part2(&input);
+    println!(">> part 2: {result2}");
+}
+
+fn part1(input: &str) -> usize {
+    let lines: Vec<&str> = input.lines().collect();
+    let mut lines_of_digits: Vec<Vec<&str>> = Vec::new();
+    for line in lines {
+        let vec_digits: Vec<&str> = line.split_whitespace().collect();
+        lines_of_digits.push(vec_digits);
+    }
+    let mut sum: usize = 0;
+    for index in 0..lines_of_digits.first().expect("first char_line").len() {
+        let char1: usize = lines_of_digits
+            .first()
+            .expect("line of chars")
+            .get(index)
+            .expect("char")
+            .to_string()
+            .parse()
+            .unwrap();
+        let char2: usize = lines_of_digits
+            .get(1)
+            .expect("line of chars")
+            .get(index)
+            .expect("char")
+            .to_string()
+            .parse()
+            .unwrap();
+        let char3: usize = lines_of_digits
+            .get(2)
+            .expect("line of chars")
+            .get(index)
+            .expect("char")
+            .to_string()
+            .parse()
+            .unwrap();
+        let char4: usize = lines_of_digits
+            .get(3)
+            .expect("line of chars")
+            .get(index)
+            .expect("char")
+            .to_string()
+            .parse()
+            .unwrap();
+        let operator = lines_of_digits
+            .get(4)
+            .expect("line of chars")
+            .get(index)
+            .expect("operator");
+        match *operator {
+            "+" => sum += char1 + char2 + char3 + char4,
+            "*" => sum += char1 * char2 * char3 * char4,
+            _ => sum += 0,
+        };
+    }
+    sum
+}
+
+fn part2(input: &str) -> usize {
+    123
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::part1;
+
+    const TEST_INPUT: &str = r#"
+123 328  51 64 
+ 45 64  387 23 
+  6 98  215 314
+*   +   *   +  "#;
+    const TEST_SOLUTION_P1: usize = 4277556;
+    const TEST_SOLUTION_P2: usize = 0;
+
+    #[test]
+    fn test_solution_p1() {
+        let input = TEST_INPUT;
+
+        assert_eq!(TEST_SOLUTION_P1, part1(input));
+    }
+
+    #[test]
+    fn test_solution_p2() {
+        let _vec_str = TEST_INPUT.split_whitespace();
+
+        assert_eq!(TEST_SOLUTION_P2, 0);
+    }
+}

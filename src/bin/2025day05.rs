@@ -61,7 +61,7 @@ fn part2(input: &str) -> usize {
 
     // since the ranges are sorted you only
     // need to check if the next range starts
-    // before the selected range ends if yes
+    // before the selected range e s if yes
     // - extend that range if no - its a new
     // range, merge these ranges
     let mut merged_ranges = Vec::new();

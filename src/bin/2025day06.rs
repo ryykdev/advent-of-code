@@ -25,34 +25,34 @@ fn part1(input: &str) -> usize {
         lines_of_digits.push(vec_digits);
     }
     let mut sum: usize = 0;
-    for index in 0..lines_of_digits.first().expect("first char_line").len() {
-        let char1: usize = lines_of_digits
+    for index in 0..lines_of_digits.first().expect("first digit line").len() {
+        let digits1: usize = lines_of_digits
             .first()
-            .expect("line of chars")
+            .expect("line of digits")
             .get(index)
             .expect("char")
             .to_string()
             .parse()
             .unwrap();
-        let char2: usize = lines_of_digits
+        let digits2: usize = lines_of_digits
             .get(1)
-            .expect("line of chars")
+            .expect("line of digits")
             .get(index)
             .expect("char")
             .to_string()
             .parse()
             .unwrap();
-        let char3: usize = lines_of_digits
+        let digits3: usize = lines_of_digits
             .get(2)
-            .expect("line of chars")
+            .expect("line of digits")
             .get(index)
             .expect("char")
             .to_string()
             .parse()
             .unwrap();
-        let char4: usize = lines_of_digits
+        let digits4: usize = lines_of_digits
             .get(3)
-            .expect("line of chars")
+            .expect("line of digits")
             .get(index)
             .expect("char")
             .to_string()
@@ -60,12 +60,12 @@ fn part1(input: &str) -> usize {
             .unwrap();
         let operator = lines_of_digits
             .get(4)
-            .expect("line of chars")
+            .expect("line of digits")
             .get(index)
             .expect("operator");
         match *operator {
-            "+" => sum += char1 + char2 + char3 + char4,
-            "*" => sum += char1 * char2 * char3 * char4,
+            "+" => sum += digits1 + digits2 + digits3 + digits4,
+            "*" => sum += digits1 * digits2 * digits3 * digits4,
             _ => sum += 0,
         };
     }
